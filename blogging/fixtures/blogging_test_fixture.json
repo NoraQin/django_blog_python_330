@@ -1,0 +1,38 @@
+[
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "admin",
+            "first_name": "Mr.",
+            "last_name": "Administrator",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2023-05-19 19:55:30.824690",
+            "groups":[],
+            "user_permissions":[],
+            "password": "adminpassword",
+            "email": "admin@example.com",
+            "date_joined": "2023-05-19 19:55:30.824690"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.user",
+        "fields": {
+            "username": "noname",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2023-05-19 19:55:30.824690",
+            "groups":[],
+            "user_permissions":[],
+            "password": "randomuserpass",
+            "email": "noname@example.com",
+            "date_joined": "2023-05-19 19:55:30.824690"
+        }
+    }
+]
