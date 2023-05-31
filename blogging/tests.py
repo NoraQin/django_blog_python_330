@@ -48,7 +48,7 @@ class FrontEndTestCase(TestCase):
     def test_list_only_published(self):
         resp = self.client.get('/') #self.client comes with TestCase, allows you to get the output you would've gotten with a web browser
         resp_text = resp.content.decode(resp.charset)
-        self.assertTrue("Recent Posts" in resp_text)
+        self.assertTrue("New Blog Post Title" in resp_text)
         for count in range(1,11):
             title = "Post %d Title" % count
             if count < 6:
