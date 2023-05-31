@@ -5,6 +5,7 @@ from django.http.response import HttpResponse, Http404
 from django.template import loader
 from blogging.models import Post
 
+
 def stub_view(request, *args, **kwargs):
     body = "Stub View \n\n"
     if args:
@@ -13,13 +14,16 @@ def stub_view(request, *args, **kwargs):
     if kwargs:
         body += "Kwargs: \n"
         body += "\n".join(["\t%s: %s" % a for a in kwargs.items()])
-    return HttpResponse(body, content_type = "text/plain")
+    return HttpResponse(body, content_type="text/plain")
 
 
 class PostListView(ListView):
-    queryset = Post.objects.exclude(published_date__exact = None).order_by("-published_date")
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
     template_name = "blogging/list.html"
 
+
 class PostDetailView(DetailView):
-    queryset = Post.objects.exclude(published_date__exact = None)
+    queryset = Post.objects.exclude(published_date__exact=None)
     template_name = "blogging/detail.html"
