@@ -21,8 +21,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path("", include("blogging.urls")),
-    path("polling/", include("polling.urls")), #when someone visits polling, have polling.urls handle the routing instead
+    path(
+        "polling/", include("polling.urls")
+    ),  # when someone visits polling, have polling.urls handle the routing instead
     path("admin/", admin.site.urls),
-    path("login/", LoginView.as_view(template_name = "login.html"), name = "login"),
-    path("logout/", LogoutView.as_view(next_page = "/"), name = "logout")
+    path("login/", LoginView.as_view(template_name="login.html"), name="login"),
+    path("logout/", LogoutView.as_view(next_page="/"), name="logout"),
 ]
