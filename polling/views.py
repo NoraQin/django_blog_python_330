@@ -1,16 +1,28 @@
 from django.shortcuts import render
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.http import Http404
 from polling.models import Poll
 
-def list_view(request):
-    context = {'polls': Poll.objects.all()}
-    # take every single poll in Poll table
-    # pass it into "polls" as html context
+class PollListView(ListView):
+    model = Poll
+    template_name = 'polling/list.html'
 
-    return render(request, 'polling/list.html', context)
-    # this is the reason why we create a polling folder under template
-    # if we don't here it will just say render(request, 'list.html', context) which
-    # isn't very descriptive
+class PollDetailView(DetailView):
+    model = Poll
+    template_name = 'polling/detail.html'
+
+    def post(self, request, *args, **kwargs):
+        poll = self.get_object()
+
+        if request.POST.get("vote") == 'Yes':
+            poll.score += 1
+        else:
+            poll.score -= 1
+        poll.save()
+
+        context = {"object": poll}
+        return render(request, "polling/detail.html", context)
 
 def detail_view(request, poll_id):
     try:
