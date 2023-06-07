@@ -1,5 +1,5 @@
 from django.urls import path
-from blogging.views import stub_view, PostListView, PostDetailView
+from blogging.views import PostListView, PostDetailView
 
 urlpatterns = [
     path("", PostListView.as_view(), name="blog_index"),
